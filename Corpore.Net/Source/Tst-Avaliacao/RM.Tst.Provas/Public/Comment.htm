@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script type="text/javascript" language="javascript">
+        var questionName;
+        var txtClientId;
+        var readonly;
+        var periodicidadeGravacaoAutomatica;
+
+        function GetTexto() {
+            questionName = window.opener.questionName;
+            txtClientId = window.opener.txtRetorno;
+            periodicidadeGravacaoAutomatica = window.opener.periodicidadeGravacaoAutomatica;
+            var txt = document.getElementById('txtComentario');
+            var ownerTxt = window.opener.document.getElementById(txtClientId);
+            var str = ownerTxt.value;
+
+            if (str.length > 2000) {
+                txt.value = str.substring(0, 2000);
+            }
+            else {
+                txt.value = ownerTxt.value;
+            }
+
+            var readonly = window.opener.readonly;
+            if (readonly == 'true') {
+                txt.readOnly = true;
+                var btnSalvar = document.getElementById('btnSalvar');
+                btnSalvar.disabled = true;
+            }
+        }
+
+        function fechar() {
+            window.close();
+        }
+
+        function salvar() {
+            var txt = document.getElementById('txtComentario');
+            txtComent = window.opener.document.getElementById(txtClientId);
+            txtComent.value = txt.value;
+            fechar();
+        }
+
+        function enfocus() {
+            document.forms[0].Data.focus();
+            var txt = document.forms[0].Data;
+            txtComent = window.opener.document.getElementById(txtClientId);
+            txtComent.value = txt.value;
+            setTimeout("enblur()", 2000);
+        }
+
+        function enblur() {
+            document.forms[0].Data.blur();
+            setTimeout("enfocus()", 5);
+            document.forms[0].Data.focus();
+        }
+
+        function limitText(limitField, limitCount, limitNum) {
+            if (limitField.value.length > limitNum) {
+                limitField.value = limitField.value.substring(0, limitNum);
+            } else {
+                limitCount.value = limitNum - limitField.value.length;
+            }
+        }
+    </script>
+    <style type="text/css">
+        textarea:focus {
+            outline: 0;
+        }
+    </style>
+    <title>Comentário</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="Styles/TstGeneral.css" type="text/css" rel="stylesheet" />
+    <link href="/Corpore.net/sharedservices/styles/caption.css" type="text/css" rel="stylesheet" />
+    <link href="/Corpore.net/sharedservices/styles/default.css" type="text/css" rel="stylesheet" />
+</head>
+<body onload="GetTexto();setTimeout('enblur()', 500);" class="TstFundoTela">
+    <form id="formComentario" action="Comment.htm">
+        <table style="width: 95%; height: 313px;" border="0" cellpadding="3" cellspacing="3">
+            <tr>
+                <td style="width: 100%" align="left" colspan="2">
+                    <span id="lblComentario" class="LabelPergunta">Questão</span> <span id="lblQuestao" class="LabelResposta">
+                        <script language="javascript" type="text/javascript">document.write(window.opener.questionName);</script>
+                    </span><br /><br /><span id="Span1" class="LabelPergunta">Comentário:</span><span class="LabelPergunta" style="color: red;">*</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 100%" align="center" colspan="2">
+                    <textarea id="txtComentario" name="Data" cols="65" rows="12" class="TstTextBox"
+                              onKeyDown="limitText(this.form.txtComentario,this.form.countdown,2000);"
+                              onKeyUp="limitText(this.form.txtComentario,this.form.countdown,2000);"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <span id="Span2" class="LabelPergunta" style="color: red; font-size: 0.8em">* O comentário será salvo simultaneamente durante a digitação.</span>
+                </td>
+            </tr>
+            <tr>
+                <td align="right" style="width: 50%; height: 36px;">
+                    <input id="btnSalvar" type="button" value="Salvar" onclick="salvar();" class="TstBtn" />
+                </td>
+                <td align="left" style="width: 50%; height: 36px;">
+                    <input id="btnCancelar" type="button" value="Cancelar" onclick="fechar();" class="TstBtn" />
+                </td>
+            </tr>
+        </table>
+        <!--<div style="left: 372px; width: 421px; position: absolute; top: 339px; height: 200px;
+        background-color: #ffffcc; border-right: #000000 thin groove; border-top: #000000 thin groove;
+        overflow: auto; border-left: #000000 thin groove; border-bottom: #000000 thin groove;
+        clear: none;">-->
+    </form>
+</body>
+</html>

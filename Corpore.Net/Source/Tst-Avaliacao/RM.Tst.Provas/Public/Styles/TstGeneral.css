@@ -1,0 +1,83 @@
+﻿.TstFundoTela {
+    background-color: #ece9d8;
+}
+
+.QuestionNumber {
+    background-color: #ece9d8;
+    border-color: #ece9d8;
+    border-style: solid;
+    border-width: 0;
+    font-weight: bold;
+    color: #000;
+}
+
+.LabelPergunta {
+    font-weight: bold;
+    color: #000;
+}
+
+.LabelResposta {
+    font-weight: bold;
+    color: #007400;
+}
+
+.TstBtn {
+    color: #ffffff;
+    background-color: #006600;
+    font-weight: bold;
+}
+
+.TstRadioGroup {
+    font-weight: bold;
+    color: navy;
+    font-size: 10px;
+}
+
+.TstDropDownList {
+    padding: 2px 0 2px 2px;
+    color: #000;
+    text-decoration: none;
+    font-family: Verdana;
+    font-size: 10px;
+    width: 100%;
+    background-color: #EFF1E6;
+}
+
+.TstTextBox {
+    color: #000;
+}
+
+
+.Label {
+    font-weight: bolder;
+    color: #000;
+}
+
+    .Label.Cabecalho {
+        padding: 2px 0 2px 2px;
+        text-decoration: none;
+        font-family: Verdana;
+        font-size: 18px;
+        width: 100%;
+    }
+
+    .Label.Maior {
+        padding: 2px 0 2px 2px;
+        color: #000;
+        text-decoration: none;
+        font-family: Verdana;
+        font-size: 12px;
+        width: 100%;
+        font-weight: bolder;
+    }
+
+.Panel {
+    padding: 2px 0 2px 2px;
+    color: #000;
+    text-decoration: none;
+    font-family: Verdana;
+    font-size: 10px;
+    width: 10%;
+    font-weight: bolder;
+    border-style: outset;
+}
